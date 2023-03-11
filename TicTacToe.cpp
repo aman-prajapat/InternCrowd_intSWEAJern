@@ -6,6 +6,7 @@ int OccupiedBox[9]; // stores which box is filled by which player
 
 // Funtion to chech if any player make a horizontal,vertical or diagonal line
 // or to check if someone win??
+//also return 1 or 2 with respect to which player made a line
 int CheckLine()
 {
     int getPlayer = -1;
@@ -106,12 +107,11 @@ int main()
     string player1, player2;
 
 lable:
-    RoundDetails[0]++;
+    
+    //  loop to initialize arry with -1
     for (int i = 0; i < 9; i++)
-    {
-        OccupiedBox[i] = -1;
-    }
-
+            OccupiedBox[i] = -1;
+    
     cout << "\n1 : To play game \n2 : To exit game\n"
          << setw(25) << "Enter your choice: ";
     cin >> choice;
@@ -120,6 +120,9 @@ lable:
     switch (choice)
     {
     case 1:
+    RoundDetails[0]++;
+
+    cout<<'\n'<<"Round: "<<RoundDetails[0]<<endl;
         if (RoundDetails[0] == 1)
         {
             cin.clear();
@@ -156,7 +159,7 @@ lable:
             if (i == 9)
             {
                 cout << "\n"
-                     << setw(25) << player1 << setw(5) << "vs" << setw(5) << player2 << endl;
+                     << setw(25) << player1 << setw(5) << "vs     " << player2 << endl;
                 cout << "                ------------DRAW--------------" << endl;
                 break;
             }
